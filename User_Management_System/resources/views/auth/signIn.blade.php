@@ -77,7 +77,7 @@
 
         
         
-    <form action="{{route('signUp.post')}}" method="post" > 
+    <form action="{{route('signIn.post')}}" method="post" > 
     <h1 style="text-align: center; margin-bottom:20px ">LOGIN</h1>
         @csrf
         <div class="mb-3">
@@ -97,7 +97,7 @@
         <div class="redirect-signin">
             <small>Don't have an account !</small>
             <span>
-                <a href="{{ route('register') }}" class="sign-in">
+                <a href="{{ route('signUp.get') }}" class="sign-in">
                     SIGN-UP
                 </a>
             </span>

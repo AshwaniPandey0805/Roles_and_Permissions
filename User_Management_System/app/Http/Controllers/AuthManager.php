@@ -5,19 +5,32 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class AuthManager extends Controller
 {
     public function signIn(){
+
+        if(Auth::check()){
+            // $users = User::all(); // Retrieve all users from the database
+            return redirect(route('adminPannel.get'))->with('success', 'Alreday Logined');
+        }
         
         return view('auth.signIn');
     }
 
     public function signUp(){
 
+        if(Auth::check()){
+            return redirect(route('adminPannel.get'))->with('success', 'Alreday Logined');
+        }
         return view('auth.signUp');
     }
+
+
+
 
     public function signUpPost(Request $request){
         $request->validate([
@@ -58,5 +71,27 @@ class AuthManager extends Controller
         // }
 
         return redirect(route('signIn.get'))->with('success', 'Registration Successfull ✌️');
+    }
+
+
+    public function signInPost(Request $request){
+        $request->validate([
+            'email',
+            'password',
+        ]);
+        $credentials = $request->only('email', 'password');
+        if(Auth::attempt($credentials)){
+            return redirect()->intended(route('adminPannel.get'));
+        }
+
+        return redirect(route('signIn.get'))->with('error', 'Login detials are not valid');
+    }
+
+
+
+    public function signOutPost(){
+        Auth::logout();
+        Session::flush();
+        return redirect(route('signIn.get'));
     }
 }

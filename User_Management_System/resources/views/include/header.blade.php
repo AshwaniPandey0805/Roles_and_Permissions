@@ -2,7 +2,7 @@
     <div class="container-fluid">
       <a class="navbar-brand" href="#"><span class="navbar-text">
         @auth
-          {{auth()->user()->name}}
+          {{auth()->user()->first_name}} {{auth()->user()->last_name}} 
         @else
           {{config('app.name')}}
         @endauth
@@ -18,18 +18,18 @@
           </li>
   
           {{-- auth validation --}}
-          {{-- @auth --}}
+          @auth
             <li class="nav-item">
-              <a class="nav-link" href="#">Logout</a>
+              <a class="nav-link" href="{{route('signOut.post')}}">Logout</a>
             </li>
-            {{-- @else --}}
+            @else
             <li class="nav-item">
-              <a class="nav-link" href="#">Login</a>
+              <a class="nav-link" href="{{route('signIn.get')}}">Sign In</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Register</a>
+              <a class="nav-link" href="{{route('signUp.get')}}">Sign Up</a>
             </li>
-          {{-- @endauth --}}
+          @endauth
           {{-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Dropdown link

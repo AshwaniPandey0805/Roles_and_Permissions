@@ -168,7 +168,7 @@
                     <button type="submit" class="btn btn-primary btn-block">SIGN UP</button>
                     <div class="redirect-signin">
                         <small>Already have an account? </small>
-                        <a href="{{ route('login') }}" class="sign-in">SIGN IN</a>
+                        <a href="{{ route('signIn.get') }}" class="sign-in">SIGN IN</a>
                     </div>
                 </form>
             </div>
