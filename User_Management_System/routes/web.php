@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthManager;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,17 +16,31 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return "<h1>Welcomw to dashBoard</h1>";
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// sign-In get method
+// Route::get('/sign-in', function(){
+//     return view('auth.signIn');
+// })->name('signIn.get');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// sign-Up get method
+// Route::get('/sign-up', function(){
+//     return view('auth.signUp');
+// })->name('signUp.get');
+
+
+Route::get('/sign-in', [AuthManager::class, 'signIn'])->name('signIn.get');
+Route::get('/sign-up', [AuthManager::class, 'signUp'])->name('signUp.get');
+
+// sign-In post
+
+Route::post('/sign-up',[AuthManager::class,'signUpPost'])->name('signUp.post');
+
+
+
+
+
+
 
 require __DIR__.'/auth.php';
