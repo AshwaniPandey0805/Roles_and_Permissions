@@ -92,7 +92,7 @@
             
     
             <div class="col-md-6">
-                <form action="#" method="post" id="myForm" enctype="multipart/form-data"> 
+                <form action="{{route('signUp.post')}}" method="post" id="myForm" enctype="multipart/form-data"> 
                     <h1 style="text-align: center; margin-bottom:20px">Register As Admin</h1>
                     @csrf
                     

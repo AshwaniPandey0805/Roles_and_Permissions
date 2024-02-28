@@ -17,7 +17,6 @@ class AuthManager extends Controller
             // $users = User::all(); // Retrieve all users from the database
             return redirect(route('adminPannel.get'))->with('success', 'Alreday Logined');
         }
-        
         return view('auth.signIn');
     }
 
@@ -36,12 +35,11 @@ class AuthManager extends Controller
         $request->validate([
             'firstName' => 'required',
             'lastName' => 'required',
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required',
             'password' => 'required',
             'phoneNumber' => 'required',
             'profile' => 'required'
         ]);
-
         // profile detials
         $data['first_name'] = $request->firstName;
         $data['last_name'] = $request->lastName;
@@ -58,8 +56,17 @@ class AuthManager extends Controller
             $roles = Role::create($role);
         
         }   
+        if($data['role'] == 'user'){
+            $role['role_id']  = 2;
+            $role['role_name'] = 'user';
+
+            $roles = Role::create($role);
+        
+        }   
         
         $profile = User::create($data);
+
+       
          
 
         if(!$profile){
@@ -69,6 +76,10 @@ class AuthManager extends Controller
         // if(!$roles){
         //     dd('Role Not filled');
         // }
+
+        if(Auth::check()){
+            return redirect(route('userList.get'));
+        }
 
         return redirect(route('signIn.get'))->with('success', 'Registration Successfull ✌️');
     }
