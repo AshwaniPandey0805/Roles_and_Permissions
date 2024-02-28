@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthManager;
+use App\Http\Controllers\Permission;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleManager;
 use Illuminate\Support\Facades\Route;
 
@@ -51,6 +53,23 @@ Route::group(['middleware'=>'auth'], function(){
 
     Route::post('/add-roles', [RoleManager::class, 'addRolePost'])->name('addRoles.post');
 });
+
+
+// permission middlware
+Route::group(['middleware'=>'auth'], function(){
+
+    Route::get('/permission', [PermissionController::class, 'getPermissions'])->name('getPermissions.get');
+
+    Route::any('/permission-assign',[PermissionController::class, 'assignPermissions'])->name('assignPermission.post');
+
+});
+
+
+
+Route::post('/permission-assign', [PermissionController::class,'getPermission'])->name('demo.get');
+
+
+
 
 
 

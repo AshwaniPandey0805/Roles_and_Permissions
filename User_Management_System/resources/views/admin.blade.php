@@ -147,6 +147,7 @@
         <li><a href="{{route('userList.get')}}"><i class="fa fa-user"></i>Users</a></li>
         <li><a href="{{route('addUser.get')}}"><i class="fa fa-user"></i> Add User</a></li>
         <li><a href="{{route('addRoles.get')}}"><i class="fa fa-user"></i> Add Roles</a></li>
+        <li><a href="{{route('getPermissions.get')}}"><i class="fa fa-user"></i> Permissions</a></li>
         <li><a href="#"><i class="fa fa-cogs"></i> Settings</a></li>
         <li><a href="#"><i class="fa fa-envelope"></i> Messages</a></li>
         <li><a href="#"><i class="fa fa-chart-bar"></i> Analytics</a></li>

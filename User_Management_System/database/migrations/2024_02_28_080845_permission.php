@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+// use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -11,11 +12,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roles', function(Blueprint $table){
+        Schema::create('permissions', function(Blueprint $table){
             $table->id();
-            $table->string('role_id')->unique();
-            $table->string('role_name');
-            $table->timestamps();
+            $table->string('permission_id')->unique();
+            $table->string('permission_name');
+        
         });
     }
 
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('permissions');
     }
 };

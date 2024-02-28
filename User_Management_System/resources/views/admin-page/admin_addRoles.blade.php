@@ -76,6 +76,8 @@
 <div id="main-container" class="container">
 
     
+
+    
     
         <div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
             <div>
@@ -90,10 +92,31 @@
                         <input type="text" placeholder="add Role name" name="roleName">
                     </div>
 
-                    <button type="submit" class="btn btn-primary btn-block">ADD Role</button>
+                    <h4>Add Permissions</h4>
+                    <hr>
+                        <div>
+                            <label><input type="checkbox" name="permission[]" value="1"> Create</label>
+                            <label><input type="checkbox" name="permission[]" value="2"> Read</label>
+                            <label><input type="checkbox" name="permission[]" value="3"> Delete</label>
+                        </div>
+
+                        <br>
+                    <div>
+                        <button type="submit" class="btn btn-primary btn-block">ADD Role</button>
+                    </div>
                 </form>
+
+                {{-- <hr>
+                <form action="{{route('assignPermission.post')}}" method="post">
+                    @csrf
+                    
+                        <div><button>submit</button></div>
+                    
+                </form> --}}
             </div>
-            <hr>
+            
+
+           
             
 
 
@@ -115,8 +138,13 @@
                     @endforeach
                 </tbody>
             </table>
+
+        
         </div>
+        
     </div>
+
+    
 </div>
 
 {{-- Script file --}}
