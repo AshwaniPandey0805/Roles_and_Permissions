@@ -73,6 +73,9 @@
         display: block; /* Show error message when active */
     }
 </style>
+<div class="header">
+    <h1>Add Roles</h1>
+</div>
 <div id="main-container" class="container">
 
     

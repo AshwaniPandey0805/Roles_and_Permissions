@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Permission extends Model
 {
     use HasFactory;
+     function roles(){
 
+        return $this->belongsTo(Role::class,'permission_id','role_id');
+     }
     
 }

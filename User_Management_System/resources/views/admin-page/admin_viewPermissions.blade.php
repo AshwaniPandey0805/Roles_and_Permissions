@@ -1,4 +1,6 @@
-{{-- @extends('admin')
+
+
+@extends('admin')
 @section('admin-title', 'Roles and Assigned Roles')
 @section('admin-content')
 <style>
@@ -16,27 +18,32 @@
     }
 </style>
 
+<div class="header">
+    <h1>Assigned Permissions</h1>
+</div>
+<br>
 <table>
     <thead>
         <tr>
             <th>Role Name</th>
-            <th>Role ID</th>
             <th>Assigned Roles</th>
         </tr>
     </thead>
     <tbody>
-        @foreach ($roles as $role)
+        
         <tr>
-            <td>{{ $role->role_name }}</td>
-            <td>{{ $role->role_id }}</td>
-            <td>
+            <td>{{ $role->role_name}}</td>
+            <td></td>
+            {{-- <td>
                 @foreach ($role->assignedRoles as $assignedRole)
                     {{ $assignedRole->role_name }}<br>
                 @endforeach
-            </td>
+            </td> --}}
         </tr>
-        @endforeach
+        
     </tbody>
 </table>
     
-@endsection --}}
+@endsection
+
+{{-- <h1>{{dd($role->role_name)}}</h1> --}}

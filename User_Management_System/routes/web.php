@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthManager;
 use App\Http\Controllers\Permission;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RelationController;
 use App\Http\Controllers\RoleManager;
 use Illuminate\Support\Facades\Route;
 
@@ -62,11 +63,18 @@ Route::group(['middleware'=>'auth'], function(){
 
     Route::any('/permission-assign',[PermissionController::class, 'assignPermissions'])->name('assignPermission.post');
 
+    Route::any('/permission/{id}', [PermissionController::class, 'grantedPermission'])->name('view');
+
 });
 
 
 
 Route::post('/permission-assign', [PermissionController::class,'getPermission'])->name('demo.get');
+
+Route::any('/edit/{id}', [AdminController::class, 'editUser'] )->name('edit');
+
+
+Route::get('/relation', [RelationController::class, 'index'])->name('index.get');
 
 
 

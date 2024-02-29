@@ -1,3 +1,7 @@
+
+
+
+
 @extends('admin')
 @section('admin-title', 'User List')
 @section('admin-content')
@@ -155,11 +159,11 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        {{-- <div class="mb-3">
-                            <label for="roleName" class="form-label">Role Name</label>
-                            <input type="text" class="form-control" id="roleName" name="roleName">
-                            <small class="error" id="roleNameError">Role name  is required.</small>
-                        </div> --}}
+                        <div class="mb-3">
+                            <label for="userID" class="form-label">User ID</label>
+                            <input type="text" class="form-control" id="userID" name="userID" value={{$userID}}>
+                            <small class="error" id="cpasswordError">Confirm password is required.</small>
+                        </div>
                         
                     </div>
                     

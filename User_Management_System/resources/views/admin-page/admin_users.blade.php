@@ -1,6 +1,18 @@
 @extends('admin')
 @section('admin-title', 'User List')
 @section('admin-content')
+<style>
+    /* Style to remove default anchor styling */
+    .button-edit a {
+        text-decoration: none; /* Remove underit erline */
+        color: inherit;
+    }
+    .button-view a {
+        text-decoration: none; /* Remove underit erline */
+        color: inherit;
+    }
+    
+</style>
 <div class="header">
     <h1>User Details</h1>
 </div>
@@ -27,10 +39,10 @@
                 <td>{{$item->last_name}}</td>
                 <td>{{$item->email}}</td>
                 <td>{{$item->phone_number}}</td>
-                <td>{{$item->role}}</td>
+                <td>{{$item->role->role_name}}</td>
                 <td class="button-group">
-                    <button class="button-edit">Edit</button>
-                    <button class="button-view">View</button>
+                    <button class="button-edit"><a href="{{route('edit', ['id' => $item->id] )}}">edit</a></button>
+                    <button class="button-view"><a href="{{route('view', ['id' => $item->id] )}}">View</a></button>
                     <button class="button-delete">Delete</button>
                 </td>
                 

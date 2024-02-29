@@ -27,24 +27,15 @@ class AdminController extends Controller
         return view('admin-page.admin_addUser',['roles' => $roles]);
     }
 
-    public function addUserPost(Request $request){
-        $request->validate([
-            'firstName' => 'required',
-            'lastName' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required',
-            'phoneNumber' => 'required',
-            'profile' => 'required'
+    public function editUser(Request $request, $id){
+
+        $roles = Role::all();
+        return view('admin-page.admin_editUser',[
+            'userID' => $id,
+            'roles' => $roles
         ]);
 
-        // user detials
-        $data['first_name'] = $request->firstName;
-        $data['last_name'] = $request->lastName;
-        $data['email'] = $request->email;
-        $data['password'] = Hash::make($request->password);
-        $data['phone_number'] = $request->phoneNumber;
-        $data['role'] = $request->profile;
-
-        dd($data);
     }
+
+
 }

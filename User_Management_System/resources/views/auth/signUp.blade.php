@@ -150,7 +150,7 @@
                                 <label for="profile" class="form-label">Profile</label>
                                 <select name="profile" id="profile" class="form-control">
                                     <option value="">Select</option>
-                                    <option value="admin">ADMIN</option>
+                                    <option value="101">ADMIN</option>
                                 </select>
                                 <small class="error" >Show Error</small>
                             </div>

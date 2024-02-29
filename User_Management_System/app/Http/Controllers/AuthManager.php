@@ -22,6 +22,8 @@ class AuthManager extends Controller
 
     public function signUp(){
 
+        // dd(Role::with('rolePermission')->find(1));
+
         if(Auth::check()){
             return redirect(route('adminPannel.get'))->with('success', 'Alreday Logined');
         }

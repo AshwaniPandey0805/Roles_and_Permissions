@@ -12,14 +12,16 @@ class Role extends Model
     protected $table = 'roles';
 
     protected $fillable = [
-        'role_id',
         'role_name',
     ];
     // public $timestaps = false;
 
 
-    // public function rolePermissions(){
+//    public function rolePermission(){
+//     return $this->belongsToMany(Permission::class,'permission_assign');
+//    }
 
-    //     return $this->belongsToMany(Permission::class,'permission_assign','role_id','permission_id', 'id');
-    // }
+    public function users(){
+        return $this->belongsTo(User::class);
+    }
 }
